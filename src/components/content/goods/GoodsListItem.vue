@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-list-item">
+  <div class="goods-list-item" @click="itemClick">
     <img :src="goodsItem.img" alt="" @load="imagesLoad">
     <div class="text">
       <p>{{goodsItem.name}}</p>
@@ -18,9 +18,14 @@
       }
     },
     methods: {
+      // 图片加载
       imagesLoad() {
         // console.log(12)
         this.$bus.$emit('itemImageLoad')
+      },
+      // 跳转到详情页
+      itemClick() {
+        this.$router.push('/detail/' + this.goodsItem.id)
       }
     }
   }

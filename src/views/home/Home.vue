@@ -36,6 +36,7 @@
   import BackTop from 'components/content/BackTop'
 
   import {getMenu, getHomeProduct} from 'network/home'
+  import {debounce} from '@/common/utils'
 
   export default {
     name: "home",
@@ -85,7 +86,7 @@
       }
     },
     mounted() {
-      const refresh = this.debounce(this.$refs.scroll.refresh, 200)
+      const refresh = debounce(this.$refs.scroll.refresh, 200)
       // 监听item中图片加载完成
       this.$bus.$on('itemImageLoad', () => {
         refresh()
@@ -104,16 +105,16 @@
     },
     methods: {
       // 防抖函数
-      debounce(func, delay) {
-        let timer = null
-        return function(...args) {
-          if (timer) clearTimeout(timer)
-
-          timer = setTimeout(() => {
-            func.apply(this, args)
-          }, delay)
-        }
-      },
+      // debounce(func, delay) {
+      //   let timer = null
+      //   return function(...args) {
+      //     if (timer) clearTimeout(timer)
+      //
+      //     timer = setTimeout(() => {
+      //       func.apply(this, args)
+      //     }, delay)
+      //   }
+      // },
       // 事件监听
       tabClick(index) {
         switch (index) {

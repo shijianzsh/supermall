@@ -16,7 +16,7 @@ module.exports = {
     open: true, // 配置自动启动浏览器
     proxy: {
       '/api':{ // 替换代理地址名称
-        target:'http://apifgb.fenggubao.com/', // 代理地址
+        target:'http://47.106.229.1/APP/', // 代理地址
         changeOrigin:true, // 可否跨域
         pathRewrite:{
           '^/api':'' // 重写接口
